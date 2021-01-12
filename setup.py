@@ -13,7 +13,7 @@ f.close()
 
 setup(
     name='fastapi-tools',
-    version='0.0.1',
+    version='0.0.2',
     description='fastapi tools',
     long_description=readme,
     long_description_content_type='text/markdown',
