@@ -2,8 +2,6 @@
 # Intro: FastApi 路由
 # Author: Ztj
 # Email: ztj1993@gmail.com
-# Version: 0.0.1
-# Date: 2020-01-03
 
 from fastapi import APIRouter
 from fastapi.responses import PlainTextResponse
