@@ -2,12 +2,10 @@
 # Intro: FastApi 应用
 # Author: Ztj
 # Email: ztj1993@gmail.com
-# Version: 0.0.1
-# Date: 2020-01-03
-
-from fastapi import FastAPI, APIRouter
 
 from ZtjDirImport import DirImport
+from fastapi import APIRouter
+from fastapi import FastAPI
 
 
 class FastApiApp(object):
@@ -30,17 +28,25 @@ class FastApiApp(object):
 
     def include_route(self, route):
         """包含路由"""
-        self.get_fast_api().include_router(route)
+        if isinstance(route, dict):
+            self.get_fast_api().include_router(
+                *route.get('args', []),
+                **route.get('kwargs', []),
+            )
+        elif isinstance(route, APIRouter):
+            self.get_fast_api().include_router(route)
 
     def load_routes(self, directory):
         """加载路由"""
         routes = []
         modules = DirImport('routes', directory).all()
         for name, module in modules.items():
-            if not hasattr(module, 'Router'):
-                continue
-            route = getattr(module, 'Router')
-            if not isinstance(route, APIRouter):
-                continue
-            routes.append(route)
+            if hasattr(module, 'RouterParams'):
+                route = getattr(module, 'RouterParams')
+                if isinstance(route, dict):
+                    routes.append(route)
+            elif hasattr(module, 'Router'):
+                route = getattr(module, 'Router')
+                if isinstance(route, APIRouter):
+                    routes.append(route)
         self.include_routes(routes)
