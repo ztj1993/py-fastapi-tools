@@ -8,8 +8,8 @@ from fastapi import APIRouter
 from fastapi import FastAPI
 
 
-class FastApiApp(object):
-    """接口应用"""
+class FastApiTool(object):
+    """接口工具"""
 
     def __init__(self, fast_api: FastAPI):
         self.fast_api = fast_api
