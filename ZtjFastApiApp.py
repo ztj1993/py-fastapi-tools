@@ -13,7 +13,6 @@ class FastApiApp(object):
 
     def __init__(self, fast_api: FastAPI):
         self.fast_api = fast_api
-        self.routes = None
 
     def include_routes(self, routes):
         """包含路由"""
