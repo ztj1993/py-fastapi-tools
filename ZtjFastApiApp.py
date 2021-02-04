@@ -11,15 +11,9 @@ from fastapi import FastAPI
 class FastApiApp(object):
     """接口应用"""
 
-    def __init__(self):
-        self.fast_api = None
+    def __init__(self, fast_api: FastAPI):
+        self.fast_api = fast_api
         self.routes = None
-
-    def get_fast_api(self):
-        """获取应用"""
-        if self.fast_api is None:
-            self.fast_api = FastAPI()
-        return self.fast_api
 
     def include_routes(self, routes):
         """包含路由"""
@@ -29,12 +23,12 @@ class FastApiApp(object):
     def include_route(self, route):
         """包含路由"""
         if isinstance(route, dict):
-            self.get_fast_api().include_router(
+            self.fast_api.include_router(
                 *route.get('args', []),
                 **route.get('kwargs', []),
             )
         elif isinstance(route, APIRouter):
-            self.get_fast_api().include_router(route)
+            self.fast_api.include_router(route)
 
     def load_routes(self, directory):
         """加载路由"""
