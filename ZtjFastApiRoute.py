@@ -6,9 +6,9 @@
 from fastapi import APIRouter
 from fastapi.responses import PlainTextResponse
 
-ApiRouter = APIRouter()
+Router = APIRouter()
 
 
-@ApiRouter.get('/health', name='服务状态', response_class=PlainTextResponse)
+@Router.get('/health', name='服务状态', response_class=PlainTextResponse)
 async def health():
     return 'ok'
