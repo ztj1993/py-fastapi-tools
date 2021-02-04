@@ -1,10 +1,13 @@
-from ZtjFastApiApp import FastApiApp
-from ZtjFastApiServe import FastApiServe
-from ZtjFastApiRoute import Router
+from fastapi import FastAPI
 
-app = FastApiApp()
-app.include_route(Router)
-api = app.get_fast_api()
+from ZtjFastApiRoute import Router
+from ZtjFastApiServe import FastApiServe
+from ZtjFastApiTool import FastApiTool
+
+api = FastAPI(title='示例项目')
+
+tool = FastApiTool(api)
+tool.include_route(Router)
 
 if __name__ == '__main__':
     FastApiServe('simple:api').local()
