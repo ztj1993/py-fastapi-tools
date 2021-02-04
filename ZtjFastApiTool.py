@@ -24,7 +24,7 @@ class FastApiTool(object):
         if isinstance(route, dict):
             self.fast_api.include_router(
                 *route.get('args', []),
-                **route.get('kwargs', []),
+                **route.get('kwargs', {}),
             )
         elif isinstance(route, APIRouter):
             self.fast_api.include_router(route)
