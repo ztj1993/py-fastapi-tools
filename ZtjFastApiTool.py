@@ -29,7 +29,7 @@ class FastApiTool(object):
         elif isinstance(route, APIRouter):
             self.fast_api.include_router(route)
 
-    def load_routes(self, directory):
+    def load_route(self, directory):
         """加载路由"""
         routes = []
         modules = DirImport('routes', directory).all()
