@@ -36,6 +36,7 @@ class FastApiServe(object):
             host=self.host,
             port=get_port(self.port),
             reload=True,
+            debug=True,
             access_log=True,
             **kwargs
         )
@@ -48,5 +49,6 @@ class FastApiServe(object):
             port=get_port(80),
             reload=True,
             access_log=True,
+            debug=True,
             **kwargs
         )
