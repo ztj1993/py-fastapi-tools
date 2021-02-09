@@ -17,7 +17,7 @@ setup(
     description='fastapi tools',
     long_description=readme,
     long_description_content_type='text/markdown',
-    py_modules=['ZtjFastApiApp', 'ZtjFastApiRoute', 'ZtjFastApiServe'],
+    py_modules=['ZtjFastApiTool', 'ZtjFastApiRoute', 'ZtjFastApiServe'],
     url='https://github.com/ztj1993/py-fastapi-tools',
     author='ZhangTianJie',
     author_email='ztj1993@gmail.com',
